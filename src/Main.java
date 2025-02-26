@@ -16,9 +16,9 @@ public class Main {
        String str2 = "Разность: ";
        String str3 = "Произведение: ";
        String str4 = "Частное: ";
-       System.out.println(str1+firstNumber+secondNumber);
+       System.out.println(str1+(firstNumber+secondNumber));
        System.out.println(str2+(firstNumber-secondNumber));
        System.out.println(str3+(firstNumber*secondNumber));
-       System.out.println(str4+((double)(firstNumber/secondNumber)));
+       System.out.println(str4+((double)quotient));
     }
 }
