@@ -1,39 +1,35 @@
-import java.util.Scanner;
 import java.io.File;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int validFileCount = 0; // Счетчик верно указанных файлов
+        int validFileCount = 0; // Счетчик корректных файлов
+        while (true) {
+            System.out.print("Введите путь к файлу (или 'exit' для выхода): ");
+            String path = scanner.nextLine();
 
-        while (true) { // Бесконечный цикл
-            System.out.println("Введите путь к файлу");
-            String path = scanner.nextLine(); // Считываем путь к файлу
-
-            if (path.equalsIgnoreCase("exit")) { // Условие выхода из цикла
-                System.out.println("Выход из программы.");
+            // Проверка на выход из программы
+            if (path.equalsIgnoreCase("exit")) {
                 break;
             }
+            File file = new File(path);
+            boolean fileExists = file.exists();
+            boolean isDirectory = file.isDirectory();
 
-            File file = new File(path); // Создаем объект File для указанного пути
-            boolean fileExists = file.exists(); // Проверяем, существует ли файл
-            boolean isDirectory = file.isDirectory(); // Проверяем, является ли путь директорией
-
-            // Проверяем условия
+            // Проверка условий
             if (!fileExists || isDirectory) {
-                System.out.println("Указанный файл не существует или это путь к папке.");
-                continue;
-            } else {
-                // Если файл существует и это не директория
-                validFileCount++; // Увеличиваем счетчик
+                System.out.println("Указанный путь не существует или это папка, а не файл.");
+                continue; // Продолжаем цикл
+            }
+
+            // Если путь ведет к существующему файлу
+            validFileCount++;
                 System.out.println("Путь указан верно. Это файл номер " + validFileCount);
+                }
+            scanner.close(); // Закрываем сканер
             }
         }
-
-        scanner.close();
-    }
-}
-
 
 
 
